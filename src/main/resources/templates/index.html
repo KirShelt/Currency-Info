@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<HTML xmlns:th="http://www.thymeleaf.org" lang="en">
+<HEAD>
+    <META CHARSET="UTF-8">
+    <TITLE>Currency Info</TITLE>
+    <SCRIPT src="/js/jquery-3.4.0.min.js"></SCRIPT>
+    <SCRIPT src="/js/main2.js"></SCRIPT>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="/css/curstyles.css">
+    <LINK REL="stylesheet" TYPE="text/css" HREF="/css/preloader2.css">
+</HEAD>
+<BODY>
+
+<DIV class="loaderArea">
+    <DIV class="loader"></DIV>
+</DIV>
+
+<DIV id="task-form">
+    <DIV CLASS="inline">
+        <TABLE>
+            <TR>
+                <TD WIDTH=150 CLASS="bold">
+                    <FORM>
+                        Currencies rate for the last <INPUT type="number" min="0" max="2000" id="days" name="days"
+                                                            th:value="${daysCount}"> days.
+                    </FORM>
+                    <BR>
+                    <button id="getDataButton">GET DATA</button>
+                </TD>
+            </TR>
+        </TABLE>
+    </DIV>
+</DIV>
+<DIV id="result">
+    <TABLE>
+        <TR CLASS="bold">
+            <TD>Currency</TD>
+            <TD>Max</TD>
+            <TD>MaxDate</TD>
+            <TD>Min</TD>
+            <TD>MinDate</TD>
+            <TD>Average</TD>
+        </TR>
+
+
+        <DIV th:each="currency : ${currencies}">
+            <TR CLASS="topborder">
+                <TD th:text="${currency.name}"></TD>
+                <TD th:text="${currency.maxValueString}"></TD>
+                <TD th:text="${currency.maxDate}"></TD>
+                <TD th:text="${currency.minValueString}"></TD>
+                <TD th:text="${currency.minDate}"></TD>
+                <TD th:text="${currency.averageValue}"></TD>
+            </TR>
+        </DIV>
+
+    </TABLE>
+</DIV>
+
+</BODY>
+</HTML>
